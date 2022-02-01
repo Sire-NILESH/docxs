@@ -4,8 +4,13 @@ import Icon from "@material-tailwind/react/Icon";
 import { useRouter } from "next/dist/client/router";
 
 function DocumentRow({ id, filename, date }) {
+  const router = useRouter();
+
   return (
-    <div className="flex items-center mx-10 p-4 rounded-lg hover:bg-gray-100 text-gray-700 text-sm cursor-pointer">
+    <div
+      onClick={() => router.push(`/doc/${id}`)}
+      className="flex items-center mx-10 p-4 rounded-lg hover:bg-gray-100 text-gray-700 text-sm cursor-pointer"
+    >
       <Icon name="article" size="3xl" color="blue" />
       <p className="flex-grow pl-5 w-10 pr-10 truncate">{filename}</p>
       <p classname="pr-5 text-sm">{date?.toDate().toLocaleDateString()}</p>
