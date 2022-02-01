@@ -1,8 +1,11 @@
 import React from "react";
 import Button from "@material-tailwind/react/Button";
 import Icon from "@material-tailwind/react/Icon";
+import { signout, signOut, useSession } from "next-auth/client";
 
 function Header() {
+  const [session] = useSession();
+
   return (
     <header className="sticky top-0 z-50 flex items-center px-4 py-2 shadow-md bg-white">
       <Button
@@ -39,10 +42,18 @@ function Header() {
       </Button>
 
       <img
+        onClick={signout}
+        loading="lazy"
+        className="cursor-pointer h-12 w-12 rounded-full ml-2"
+        src={session?.user?.image}
+      />
+
+      {/* is deprecated, we will use server side rendering implemented in index.js to skip this async behaviour and get session, auth and then prepare the page on the server and then send whole to the client */}
+      {/* <img  is for async behaviur solved with '?' below in src
         loading="lazy"
         className="corsor-pointer h-12 w-12 rounded-full ml-2"
-        src="https://lh3.googleusercontent.com/ogw/ADea4I744d3iRJMmzZcCEP2RPgToKCfEz4lfjk0FFsHk=s128-b16-cc-rp-mo"
-      />
+        src={session?.user?.image}
+      /> */}
     </header>
   );
 }
