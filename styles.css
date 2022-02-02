@@ -1,9 +1,3 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
-@tailwind base;
-
 @tailwind components;
 
 @layer components {
@@ -11,5 +5,3 @@
     @apply cursor-pointer hover:bg-gray-100 transition duration-200 ease-out p-2 rounded-lg;
   }
 }
-
-@tailwind utilities;
